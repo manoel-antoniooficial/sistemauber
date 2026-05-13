@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Tokens CRC</title>
+    <style>
+        body { background: #050505; color: #fff; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 50px; }
+        .box { background: #111; padding: 30px; border-radius: 15px; border: 1px solid #00f3ff; max-width: 600px; margin: 0 auto; box-shadow: 0 0 20px rgba(0, 243, 255, 0.2); }
+        h1 { color: #00f3ff; margin-bottom: 20px; }
+        p { color: #aaa; margin-bottom: 20px; line-height: 1.6; }
+        ul { text-align: left; display: inline-block; background: #000; padding: 20px 40px; border-radius: 10px; margin-bottom: 30px; border-left: 3px solid #00f3ff;}
+        li { margin-bottom: 10px; color: #ccc; }
+        button { background: #00f3ff; color: #000; border: none; padding: 20px 30px; font-size: 18px; font-weight: bold; cursor: pointer; border-radius: 10px; text-transform: uppercase; transition: 0.3s; }
+        button:hover { background: #00d2dd; transform: scale(1.05); box-shadow: 0 0 15px rgba(0, 243, 255, 0.5); }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Gerador de 50.000 Tokens</h1>
+        <p>Clique no botão abaixo para gerar seus tokens exclusivos, aleatórios e seguros. O navegador fará o download de 2 arquivos automaticamente:</p>
+        <ul>
+            <li><b>tokens.js</b>: Substitua o arquivo antigo na pasta do sistema por este novo.</li>
+            <li><b>meus_tokens.txt</b>: Lista limpa para você guardar e enviar aos motoristas.</li>
+        </ul>
+        <button onclick="gerarTokens()">Gerar e Baixar Tokens</button>
+    </div>
+
+    <script>
+        function gerarTokens() {
+            const qtd = 50000;
+            const tokens = [];
+            const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            
+            for(let i = 0; i < qtd; i++) {
+                let p1 = '', p2 = '';
+                for(let j=0; j<4; j++) p1 += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+                for(let j=0; j<4; j++) p2 += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+                tokens.push(`CRC-${p1}-${p2}`); // Exemplo: CRC-A8X2-9MN1
+            }
+
+            let jsContent = "// Arquivo gerado com 50.000 tokens seguros.\nconst TOKENS_VALIDOS = [\n" + tokens.map(t => `    "${t}"`).join(",\n") + "\n];";
+            baixarArquivo('tokens.js', jsContent);
+
+            let txtContent = "=== LISTA DE TOKENS DRIVER CRC ===\n\n" + tokens.join("\n");
+            baixarArquivo('meus_tokens.txt', txtContent);
+            
+            alert("Sucesso! Os 50.000 tokens foram gerados e baixados. Mova o arquivo 'tokens.js' para a pasta do seu sistema substituindo o antigo.");
+        }
+
+        function baixarArquivo(nome, conteudo) {
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(new Blob([conteudo], { type: 'text/plain' }));
+            a.download = nome; a.click();
+        }
+    </script>
+</body>
+</html>
