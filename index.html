@@ -34,6 +34,8 @@
 
     <div class="app-container"> 
         <header class="neon-header"> 
+            <!-- Botão de Voltar -->
+            <button type="button" class="btn-voltar" onclick="window.history.length > 1 ? window.history.back() : window.location.reload()" title="Voltar">&#8592;</button>
             <img src="logo.png" alt="Logo" class="logo">
             <h1>Driver<span>CRC</span></h1> 
         </header> 
@@ -91,7 +93,7 @@
 
         <!-- Botões de Controle e Suporte -->
         <div class="fab-container">
-            <button type="button" class="fab" title="Suporte e Chat" onclick="window.open('https://wa.me/5521995628137?text=Olá, preciso de suporte no sistema Driver CRC', '_blank')">💬</button>
+            <a href="https://api.whatsapp.com/send?phone=5521995628137&text=Ol%C3%A1%2C%20preciso%20de%20suporte%20no%20sistema%20Driver%20CRC" target="_blank" class="fab" title="Suporte e Chat" style="text-decoration: none;">💬</a>
             <button type="button" class="fab" title="Configurações" onclick="abrirConfiguracoes()">⚙️</button>
         </div>
 
