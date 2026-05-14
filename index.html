@@ -16,6 +16,10 @@
             <p>Insira seu token de acesso:</p>
             <input type="text" id="token-input" placeholder="Ex: CRC-1001">
             <button type="button" onclick="validarToken()">Entrar no Sistema</button>
+            <p style="margin-top: 15px; font-size: 13px; color: #aaa; line-height: 1.5;">
+                Não tem um token?<br>
+                Peça grátis pelo WhatsApp: <strong style="color: #00f3ff;">(21) 99562-8137</strong>
+            </p>
         </div>
     </div>
 
@@ -93,7 +97,7 @@
 
         <!-- Botões de Controle e Suporte -->
         <div class="fab-container">
-            <a href="https://api.whatsapp.com/send?phone=5521995628137&text=Ol%C3%A1%2C%20preciso%20de%20suporte%20no%20sistema%20Driver%20CRC" target="_blank" class="fab" title="Suporte e Chat" style="text-decoration: none;">💬</a>
+            <button type="button" class="fab" title="Suporte e Chat" onclick="alert('Atendimento via WhatsApp:\n(21) 99562-8137\n\nAdicione o nosso número e mande uma mensagem avisando que veio do aplicativo Driver CRC!')">💬</button>
             <button type="button" class="fab" title="Configurações" onclick="abrirConfiguracoes()">⚙️</button>
         </div>
 
